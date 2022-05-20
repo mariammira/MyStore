@@ -5,6 +5,9 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
@@ -33,7 +36,9 @@ const appRoutes :Routes =[
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
