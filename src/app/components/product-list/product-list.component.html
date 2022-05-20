@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <div class="row">
+            
+            <div style="padding:10px; " class="col-md-4" 
+            *ngFor="let product of products" 
+             >
+                <div 
+                      style="border: 1px solid #02b3e4;">
+                    <img (click)="selectProduct(product)" style="margin: 20px" [src]="product.url">
+                </div>
+                <div style="margin-left:40%">
+                    <app-product-item-detail [product]="product"></app-product-item-detail>
+                </div>
+            </div>  
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+</div>

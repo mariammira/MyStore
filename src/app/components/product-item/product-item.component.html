@@ -1,0 +1,14 @@
+<div >
+    <div class="row" style="margin:10px; " *ngIf="product">
+        <div class="col-md-2"></div>
+        <div class="col-md-4"
+              style="border: 1px solid #02b3e4;padding: 5%">
+            <img style="margin: 20px" [src]="product.url">
+        </div>
+        <div class="col-md-4" style="padding: 5%">
+            <app-product-item-detail [product]="product"></app-product-item-detail>
+            <a class="row" [routerLink]="['/']"> Back to Product List</a>
+        </div>
+        <div class="col-md-2"></div>
+    </div>  
+</div>  

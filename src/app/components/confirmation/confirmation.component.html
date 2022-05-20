@@ -1,0 +1,11 @@
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <p>Success !</p>
+        <p>Thank you {{cartObj.userInfo.name}}</p>
+        <p> your {{cartObj.totalAmount|currency}} order is confirmed</p>
+        <p>Please allow 1-3 business day(s) for shipping </p>
+        <a class="row" [routerLink]="['/']"> Back to Product List</a>
+    </div>
+    <div class="col-md-4"></div>
+</div>

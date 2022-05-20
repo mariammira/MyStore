@@ -1,0 +1,14 @@
+<div *ngIf="product">
+    <p>{{product.name}}</p>
+    <p>{{product.price| currency}}</p>
+    <p *ngIf="page=='product-item'">{{product.description}}</p>
+    <div>
+        <select  [(ngModel)]="product.amount" (change)="changeAmount($event,product)">
+            <option [ngValue]="i+1" 
+                    *ngFor="let item of [].constructor(10); let i = index">
+                    {{i+1}}</option>
+        </select>
+    </div>
+    <button *ngIf="!(page=='cart')" class="btn btn-primary"  style="margin-top: 10px;"
+        (click)="addToCart(product)"> Add To Cart</button>
+</div>
