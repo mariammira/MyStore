@@ -1,9 +1,14 @@
 <div *ngIf="product">
-    <p>{{product.name}}</p>
-    <p>{{product.price| currency}}</p>
+    <p> 
+        <label style="margin-right:3px ;" *ngIf="(page=='cart')">
+            <strong>Name:</strong></label>
+        {{product.name}}
+    </p>
+    <p> <label style="margin-right:3px ;" *ngIf="(page=='cart')"><strong>Price:</strong></label>{{product.price| currency}}</p>
     <p *ngIf="page=='product-item'">{{product.description}}</p>
     <div>
-        <select  [(ngModel)]="product.amount" (change)="changeAmount($event,product)">
+        <label style="margin-right:3px ;" *ngIf="(page=='cart')"><strong>Amount:</strong></label>
+        <select  [(ngModel)]="product.amount" (ngModelChange)="changeAmount(product)">
             <option [ngValue]="i+1" 
                     *ngFor="let item of [].constructor(10); let i = index">
                     {{i+1}}</option>

@@ -6,7 +6,7 @@
             <img style="margin: 20px" [src]="product.url">
         </div>
         <div class="col-md-4" style="padding: 5%">
-            <app-product-item-detail [product]="product"></app-product-item-detail>
+            <app-product-item-detail [page]="'product-item'" [product]="product"></app-product-item-detail>
             <a class="row" [routerLink]="['/']"> Back to Product List</a>
         </div>
         <div class="col-md-2"></div>

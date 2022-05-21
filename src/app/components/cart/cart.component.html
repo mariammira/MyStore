@@ -4,12 +4,16 @@
         *ngFor="let product of cartObj.products" 
          >
             <div *ngIf="product.id">
+              <i class="fa-solid fa-circle-xmark"></i>
                 <div 
                     style="border: 1px solid #02b3e4;">
                     <img style="margin: 20px" [src]="product.url">
                 </div>
-                <app-product-item-detail [page]="'cart'" [product]="product"></app-product-item-detail>
-
+                <app-product-item-detail [page]="'cart'" [product]="product"
+                       (changeProductAmount)="changeAmount($event)"></app-product-item-detail>
+                <button 
+                  class="btn btn-danger" style="margin-top: 3px;"
+                  (click)="removeProduct(product.id)"  >Remove</button>
             </div>    
         </div> 
         <h6> Total:{{ cartObj.totalAmount.toFixed(2)|currency}} </h6>
@@ -19,21 +23,21 @@
         <form  (ngSubmit)="submitOrder()">
             <div class="form-group">
               <label for="name">Full Name</label>
-              <input class="form-control" id="name"  name="name"
+              <input class="form-control" id="name"  name="name"  type="text" 
               [(ngModel)]="cartObj.userInfo.name"   #blogName="ngModel"
                required minlength="3"
                placeholder="min 3 charectars">
             </div>
             <div class="form-group">
               <label for="address">Address</label>
-              <input  class="form-control" id="address"   name="address" required minlength="6"
+              <input  class="form-control" id="address" type="text"   name="address" required minlength="6"
               #blogAddress="ngModel"
               [(ngModel)]="cartObj.userInfo.address" placeholder="min 6 charectars">
             </div>
             <div class="form-group">
                 <label for="cardnumber">Credit Card Number</label>
                 <input  class="form-control" id="cardnumber"  name="cardnumber" 
-                required minlength="16" 
+                required minlength="16"  type="number"
                 [(ngModel)]="cartObj.userInfo.creditCardNumber"
                 #blogCard="ngModel"  aria-describedby="cardnumberHelp"  
                 placeholder="Password">

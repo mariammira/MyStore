@@ -1,8 +1,7 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input ,Output, EventEmitter } from '@angular/core';
 import {Product} from './../../product.model'
 import {cartObj } from './../../cartObj'
 import { checkIfItemInCartAndReturnAmount,calculateTotalAmount} from './../../cartService'
-
 @Component({
   selector: 'app-product-item-detail',
   templateUrl: './product-item-detail.component.html',
@@ -11,6 +10,8 @@ import { checkIfItemInCartAndReturnAmount,calculateTotalAmount} from './../../ca
 export class ProductItemDetailComponent implements OnInit {
   @Input() product:Product|null =null
   @Input() page:string=''
+  @Output() changeProductAmount = new EventEmitter<Product>();
+
   constructor() { }
 
   ngOnInit(): void {
@@ -39,13 +40,8 @@ export class ProductItemDetailComponent implements OnInit {
       alert('added to Cart !')
     }
   }
-  changeAmount(e:any,p:Product){
-  
-    if(this.page=='cart'){
-      let index= cartObj.products.findIndex(x=>x.id==p.id)
-      if(index>-1)cartObj.products[index].amount= p.amount
-      calculateTotalAmount()
-    }
+  changeAmount(p:Product){
 
+    this.changeProductAmount.emit(p);
   }
 }
